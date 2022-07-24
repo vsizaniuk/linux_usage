@@ -1,0 +1,60 @@
+# regexp patterns (command line scope)
+
+* = one or more chars
+? = any one char 
+[a-z] = chars range 
+[abc] = matches one a or b or c
+\ = is an escape character
+
+# regexp patterns (egrep* scope)
+
+man 7 regex = regular expressions docs
+
+^ = start of the line 
+$ = end of the line 
+\< = beggining of a word
+\> = end of a word 
+\A = start of a file
+\Z = end of a file 
+
+- repetition operators
+
+{n} = exanct n times 
+{n,} = min n times
+{,n} = max n times 
+{n,m} = between n and m (inclusive)
+* = zero or more times 
++ = one or more times 
+? = zero or one time
+
+# browsing commands 
+
+grep = filters smth, for example directory content or program output 
+
+man -k user | grep 8 = all docs related to user in section 8
+grep amy /etc/* = looking for amy's in filenames and dirs 
+grep amy /etc/* 2>/dev/null = same with error stream redirection
+
+- grep can also accept files as input
+
+grep str file = searches str in file
+grep -i str file = same but case insensitive
+grep -v str = excludes str from the result
+grep -R root * = looks for files in subdirectories 
+grep -R root * -l = shows only matching file names 
+grep -A3 amy /etc/passwd = shows matching and 3 following lines 
+grep -B3 amy /etc/passwd = shows matching line and 3 lines before it 
+egrep = *extended regular expression support
+
+find {dir} [params] = search for files in a directory hierarchy
+
+find / -name "hosts" = will list up all files named exactly hosts the under root directory 
+find / -user uname = will list up all files created by uname under the root directory 
+find / -size +100M = will list up all files those size > 100 megabytes
+find / -size +100M 2>/dev/null = as previous, but error output will be redirected to /dev/null
+mkdir /root/uname; find / -user uname -exec cp {} /root/uname \; = will make a backup for all files created by uname 
+find / -type f -size +100M = will list up all files bigger than 100 megabytes
+find /etc -exec grep -l amy {} \; 2>/dev/null = will find all objects containing amy in file names in the /etc directory
+find /etc -name '*' -type f | xargs grep "127.0.0.1" = will find all files that contains text 127.0.0.1 in the /etc directory
+
+#

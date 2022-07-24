@@ -1,0 +1,15 @@
+# bash startup and logout files 
+
+/etc/environment = first file that is processed while starting bash, universal level, users and processes
+/etc/profile = file that is processed after user logins, universal level, users 
+/etc/profile.d = directory, in witch custom system configs should be placed, universal level, users
+~/.bash_profile = same as /etc/profile on user level, local level, users
+~/.bash_logout # processed as logout = file that is processed after user logouts, local level, user
+/etc/bashrc = file that is processed as startup of a subshell, universal level, users
+~/bashrc = same as /etc/bashrc on user level, local level, users
+
+
+alias = shows current alias setup 
+- aliases can be set up in a /etc/profile
+
+#

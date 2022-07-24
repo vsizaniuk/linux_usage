@@ -1,0 +1,43 @@
+# keybord control
+
+cntrl + l = clears the terminal
+cntrl + a = moves cursor to the start of the line 
+cntrl + e = moves cursor to the end of the line 
+cntrl + u = wipes up current line
+cntrl + c = makes process interrupt
+cntrl + d = exit
+
+tab = command/filename autocompletion
+alt + f{n} = allows to switch terminal from 1 to 6
+
+# basic commands
+
+whoami = displayes current user
+id [user] = returns user information
+passwd = current user password change
+clear = clears terminal (like cntrl + l)
+echo [smth] = displayes smth 
+pwd = displayes current working directory
+touch {filename} = creates filename in pwd  
+hostname = displayes current host name 
+ifconfig = displayes current host network configs 
+uname = displayes system information 
+date = returns current system date
+last = displayes list of last logins
+wc = counts words number somethere
+du -hs = shows dir size
+time {some commands} = measures time spend on running a particular command
+
+cmd --help = displayes cmd short documentation 
+man {cmd} = displayes command complete documentation 
+man -k {keyword} = performs search by keyword across docs
+mandb = updates documentation index
+
+history = shows the list of executed commands during current session
+history -c = clears current session history 
+history -w = writes current session history in .bash_history
+!nn # executes nn command from history 
+!{letter} # executes last command starded with letter from history 
+cntrl+R can be used to perform text search through current session history
+
+#

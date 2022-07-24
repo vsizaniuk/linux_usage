@@ -1,0 +1,85 @@
+# linux bash streams
+
+0 points to stdin
+1 points to stdout
+2 points to errors stdout
+
+redirection 
+
+input can be redirected using < = ex. "sort < /etc/services"
+output can be redirected using > or >> (append) = ex. "who > myfile; who >> myfile"
+error can be redirected using 2> = ex. "grep -R root /proc 2>/dev/null"
+
+both output and error can be redirected using &> 
+
+command output can be redirected as input to another command using pipe
+| = pipe 
+tee {file} = do both, output redirection and file creation using output as content 
+
+# files commands 
+
+touch {filename} = creates a file 
+file {filename} = analyzes a file and finds out what type of file it is 
+
+rm = removes a file
+mv = moves or renames a file 
+
+cp {filename} {dest} = file copy command
+cp -R {dir} {dest} = copyes entire subtree 
+cp -R /dirname {dest} = copyes only content of dirname
+cp -R /dirname/ {dest} = copyes entire subdirectory dirname
+
+dd = converts and copyes particular file
+dd if=/dev/zero of={filename} bs=1M count=1024 := creates a file containing zeros with block size=1m and block count=1024 (1 gb of zeros)
+
+ln {file} {link_name} = creates a hard link to a file 
+ln -s {file or path} {link name} = creates a symbolic link to a specific object
+
+cat {filename} = prints file's content
+cat {filename} -n = prints file's content with line numbers
+cat {filename} -A = shows unprintable characters
+cat {filename} -b = shows line numbers, skips empty lines
+cat {filename} -n = shows line numbers, does not skips empty lines
+cat {filename} -s = removing repeated empty lines
+tac {filename} = same in reverse
+
+less {filename} = allows browsing of the file content
+more {filename} = same as less, but less is more functional
+view {filename} = same but more vi* based 
+head {filename} = shows only first lines, optional -n allows conf of number of lines to show
+tail {filename} = same from the end
+tail {filename} -f = usefull conf - keeps refreshing, shows new lines if inserted 
+
+# bash text editors
+
+nano {filename} = switches on nano text editor 
+vi {filename} = switches on vi text editor 
+vim {filename} = switches on vim text editor 
+vimtutor # a little tutorial through vi commands and features 
+
+- vi (vim) works in 2 modes - command mode and input mode
+- 1st allows to do general things like save file or change mode
+	
+	gg = moves cursor to the start of a document
+	G = moves cursor to the end of a document
+	e - moves cursor to the end of a line
+	u = does undo 
+	dd = deletes a line 
+	v = switches to visual mode, allows to highlight text
+	d = works with highlighted text like cntrl x
+	y = works with highlighted text like cntrl c
+	/ [text] = performs text search from the beginning of a file
+	n = in text search mode, moves cursor to the next occurance
+	? [text] = performs text search from the end of a file
+	i, o, O, a, insert tab = switch mode to input
+	esc tab = switches mode to command
+	
+	: + some keys are also the commands in command mode 
+		:%s/string2replace/replacement/ [g] = find and replace, g for all occurencies 
+		:wq = means write file content and quit vi 
+		:q = simple quits 
+		:q! = force quit, ! in general forces any command  
+
+- 2nd allows to edit a particular file's content
+
+#

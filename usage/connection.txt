@@ -1,0 +1,12 @@
+# remote connection
+
+ssh = allows to connect to remote hosts
+ssh dbadmin@foresee.com = connects to foresee.com as dbadmin
+ssh dbadmin@foresee.com -X = same, allows to use grafical tools 
+
+ssh-keygen = generates privite-publick key pair (id_rsa, id_rsa.pub)
+ssh-copy-id = allows to copy publick key to the remote server
+
+scp {file} host:/[dir] = allows to copy files local-server through ssh
+
+#

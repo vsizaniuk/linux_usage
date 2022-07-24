@@ -1,0 +1,32 @@
+# directoryes navigation and control commands
+
+mkdir {dirname} = creates a directory in pwd
+mkdir -p {dir/dir/.../dir} = creates an entire directoryes subtree
+rmdir {dirname} = removes a directory if it is empty
+rm -r {dirname} = removes an entire directory including files and subdirs
+rm -rf {dirname} = previous, but forced
+mv {dirname} {newdirname} = moves or ranames a directory 
+
+ln -s {file or path} {link name} = creates a symbolic link to a specific object
+
+cp -R [dir] [dest] = copyes entire subtree 
+cp -R /dirname/ [dest] = copyes entire subdirectory dirname
+
+cd {dest} = changes pwd 
+cd - = goes to previous dir
+cd .. = goes to one level up dir
+cd ~ = goes to the home dir 
+
+ls [dirname] = displayes content of pwd or dirname if present(just names)
+ls -a [dirname] = displayes pwd content with hidden items (just names)
+ls -l [dirname] = displayes more detailed list of dir content as table
+
+ls -l columns:
+object_type&rights links_count owner owner_group bytes last_modyfied object_name
+
+ls - lrt = same as ls -l, but ordered by last_modyfied asc
+ls -ld [dirname] = shows detailed dir properties, pwd by default 
+ls a* = uses regexp pattern, shows all dirs starts with a, and its content
+ls -d a* = uses regexp pattern, shows all dirs starts with a
+
+#

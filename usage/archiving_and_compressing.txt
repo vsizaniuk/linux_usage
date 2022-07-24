@@ -1,0 +1,18 @@
+# directories archiving 
+
+tar = utility that manages archives 
+tar -cvf {filename} [dir, ...] = creates an archive named filename from a particular dir(s)
+tar -xvf {filename} [-C {dirname}] = extracts an archive in particular directory (pwd by default, can be specified by -C {dirname})
+tar -tvf {filename} = shows content of an archive
+tar -czvf {filename} [dir, ...] = creates a compressed archive 
+tar -cjvf {filename} [dir, ...] = crestes a compressed archive (different compressing engine)
+
+# files compressing
+
+gzip {filename} = compresses a particular file inplace
+gunzip {filename} = uncompresses a particular file inplace
+bzip {filename} = compresses a particular file, algorithm differs from previous one, inplace
+bunzip {filename} = uncompresses a particular file algorithm differs from previous one inplace
+zip {resultfilename} {filename} = compresses a particular file, keeps uncompressed version
+
+#

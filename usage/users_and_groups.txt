@@ -1,0 +1,28 @@
+# rigths level ctl
+
+sudo = allows to run tasks with root or particular user rights
+sudo -i = to log in with user's env config (.bash_profile, ...)
+sudo passwd = user's password change
+sudo visudo = allows to edit sudo configs
+
+- in order to use sudo a user must be in a wheel usergroup 
+- under root
+usermod -aG wheel {username} = adds user to wheel group using usermod*
+
+
+su = switches user 
+su - = switches user with login
+
+# users management commands
+
+- some configs
+- vi /ect/passwd
+- vi /etc/group 
+
+passwd [user] = changes user's password 
+useradd = create a new user or update default new user information
+useradd -a -G
+chmod 
+chown
+
+#
