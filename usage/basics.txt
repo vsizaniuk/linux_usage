@@ -27,6 +27,7 @@ last = displayes list of last logins
 wc = counts words number somethere
 du -hs = shows dir size
 time {some commands} = measures time spend on running a particular command
+getent {database} {key} = shows specific admin db record
 
 cmd --help = displayes cmd short documentation 
 man {cmd} = displayes command complete documentation 
