@@ -29,4 +29,6 @@ ls -ld [dirname] = shows detailed dir properties, pwd by default
 ls a* = uses regexp pattern, shows all dirs starts with a, and its content
 ls -d a* = uses regexp pattern, shows all dirs starts with a
 
+tree {dirname} = displayes a full directory tree
+
 #
