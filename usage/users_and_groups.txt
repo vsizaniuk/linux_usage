@@ -1,11 +1,11 @@
-# rigths level ctl
+# rights level ctl
 
-sudo = allows to run tasks with root or particular user rights
+sudo = allows running tasks with root or particular user rights
 sudo -i = to log in with user's env config (.bash_profile, ...)
 sudo passwd = user's password change
-sudo visudo = allows to edit sudo configs
+sudo visudo = allows editing sudo configs
 
-- in order to use sudo a user must be in a wheel usergroup 
+- in order to use sudo a user must be in a wheel users group
 - under root
 usermod -aG wheel {username} = adds user to wheel group using usermod*
 
@@ -13,16 +13,62 @@ usermod -aG wheel {username} = adds user to wheel group using usermod*
 su = switches user 
 su - = switches user with login
 
+# users session management
+
+w = shows list of active sessions
+who = same, bur in short
+loginctl = an interface to control user sessions
+loginctl list-sessions = shows the list of active sessions
+loginctl session-status {SID} = shows detailed log of a particular session
+
+# browsing users information
+
+id [user] = shows user's information
+getent passwd user = shows user's db entry (from /ect/passwd)
+
 # users management commands
 
 - some configs
 - vi /ect/passwd
-- vi /etc/group 
+- vi /etc/group
+- vi /etc/shadow
+    - !! in password field means that password wasn't set yet
+    - None in password field means that there's no password
+- vi /etc/gshadow
 
-passwd [user] = changes user's password 
 useradd = create a new user or update default new user information
 useradd -a -G
-chmod 
+adduser = create a new user on ubuntu
+
+usermod = can modify an existing user
+usermod -G wheel user = replaces a current supplementary groups list with wheel
+usermod -aG wheel user = adds wheel group to the supplementary groups list
+
+userdel = delete a user
+
+groupadd = create a new users group
+groupmod = can modify an existing group
+groupdel = delete a group
+
+vipw = allows /ect/passwd editing without conflicts via vi
+vigr = same for groups
+
+passwd [user] = changes user's password
+passwd --stdin user = accept password from stdin
+
+
+chmod
 chown
+
+# user defaults configs
+
+useradd -D = interface to configuration of defaults while user creation
+
+- defaults files
+- /etc/login.defs = stores user creation defaults
+- /etc/default/useradd = stores useradd defaults
+- /etc/skell = contents of this dir is copied to the new user homedir
+
+chage = can modify user defaults
 
 #
