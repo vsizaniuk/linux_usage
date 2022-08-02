@@ -1,0 +1,4 @@
+# in order to successefully install guest additions the following packages may require
+# under root
+
+dnf install perl make bzip2 gzip unzip kernel-uek-devel-$(uname -r) tar
