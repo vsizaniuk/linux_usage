@@ -1,0 +1,20 @@
+# browsing linux storage
+
+lsblk = shows available block devices
+lsof {device} = shows current processes in a device
+mount = shows mounts log
+findmnt = same in a nice way
+
+# partitions
+
+fdisk = tool to manage MBR partitions
+gdisk = tool to manage GPT partitions
+partprobe = may be necessary in order to update kernel partition table
+
+# file system
+
+mkfs[.type] {device} = tool to create a file system, there are several types of it (internal realisation, compatibility and performance can differ
+mount {device} = allows mounting a device to a directory
+umount {device} = allows unmounting a device from a directory
+
+#
