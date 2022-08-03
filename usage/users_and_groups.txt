@@ -56,10 +56,6 @@ vigr = same for groups
 passwd [user] = changes user's password
 passwd --stdin user = accept password from stdin
 
-
-chmod
-chown
-
 # user defaults configs
 
 useradd -D = interface to configuration of defaults while user creation

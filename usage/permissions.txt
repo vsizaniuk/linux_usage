@@ -1,0 +1,54 @@
+# ugo - user - group - others: ownership
+
+chgrp {group} {object} = change group owner
+chown {user} {object} = change user owner
+chown {user:group} {object} = change user and group owner
+# ugo - mode
+
+- permissions meaning matrix
+
+  | file   | dir
+r | open   | list
+w | modify | create/delete
+e | run    | cd
+
+- object permissions matrix
+
+      |     sp     | user owner | group owner | others
+r = 4 | suid = 4   |     4      |     4       |   4
+w = 2 | sgid = 2   |     2      |     2       |
+e = 1 | sticky = 1 |     1      |     1       |
+                         7            7           4
+- this example means that user and group owner have full rights on an object, others can only read
+
+
+chmod {rel or abs mode def} {object} = can change ugo rights on a particular object
+chmod 777 test_file = everyone can do anything, absolute mode
+chmod g+w test_file = grants write to group, relative mode
+
+- special permissions meaning matrix
+
+           | file               | dir
+suid = 4   | run as owner       |  -
+sgid = 2   | run as group owner | inherit directory group owner
+sticky = 1 |         -          | delete if you are owner
+
+
+- in order to manage special permissions you need to add additional specification to chmod mode
+
+chmod 4770 object = modifies object's special permissions, as left-leading "4" is specified
+chmod u+s file   = grants suid on an object
+chmod g+s object = grants sgid on an object
+chmod +t dir = grants sticky bit on a directory
+
+# default permissions
+
+- default permissions on directories are 777
+- default permissions on files are 666
+
+umask = allows subtracting default permissions (shell configuration)
+
+umask 022 = will set default files permissions to 644, dir to 755
+umask 027 = will set default files permissions to 640, dir to 750
+
+#
