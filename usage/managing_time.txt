@@ -1,0 +1,28 @@
+#
+hardware time  --> system time <---> NTP (network time protocol)
+
+- system time commands
+    date
+    time
+    datectl
+- hardware time commands
+    hwtime
+    hwclock
+
+date = shows the current system time
+date -s [ISO datetime] = allows setting the time
+hwclock -s = set the system time from hardware clock
+hwclock -w = set the hardware clock from system time
+timedatectl = allows managing time and timezones
+
+NTP servers have got stratum 1-16 that is a measurement of server reliability
+1 (atomic clock) --> 2 --> 3 .... --> 16 (time errors contain)
+
+timedatectl status = shows the system datetime configuration
+chronyc sources = shows NTP servers information
+ntpdate = allows setting datetime from NTP
+ntpq = allows querying ntp
+
+insane clock - a situation when the system time is to far from NTP server time, it may require adjusting system time before using ntpdate
+
+#
