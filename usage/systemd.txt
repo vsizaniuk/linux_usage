@@ -1,0 +1,41 @@
+# systemd
+is the manager of everything
+first thing that is started after starting the Linux kernel
+it starts processes and can do it in parallel
+manages mounts, timers, paths and much more
+it is events driven
+
+Items that are managed by systemd are called units
+Default units are in /usr/lib/systemd/system, custom units are in /etc/systemd
+custom unit > default unit
+
+systemctl = command line systemd manager
+systemctl -t help = shows unit types
+systemctl list-unit-files = lists all installed units
+systemctl list-units = lists active units
+systemctl enable {name.service}
+systemctl start {name.service}
+systemctl disable {name.service}
+systemctl stop {name.service}
+systemctl status {name.service}
+systemctl cat {name.service} = shows current unit configuration
+systemctl show {name.service} = shows all available configuration parameters
+systemctl edit {name.service} = allows editing service configuration
+systemctl deamon-reload = reloads service configuration
+systemctl restart {name.service} = restarts the service
+
+# target
+is a group of services
+some targets are isolatable witch means that you can use them as a state your system should be in
+    - emergency.target
+    - resque.target
+    - multi-user.target
+    - graphical.target
+
+systemctl list-dependencies name.target = shows the content and dependencies of name.target
+systemctl start name.target = starts a target
+systemctl isolate name.target = switches system to another target
+systemctl get-default = shows default name.target
+systemctl set-default name.target = sets default name.target
+
+#
