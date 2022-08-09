@@ -8,7 +8,7 @@ cntrl + c = makes process interrupt
 cntrl + d = exit
 
 tab = command/filename autocompletion
-alt + f{n} = allows to switch terminal from 1 to 6
+alt + f{n} = allows switching terminal from 1 to 6
 
 # basic commands
 
@@ -20,7 +20,8 @@ echo [smth] = displayes smth
 pwd = displayes current working directory
 touch {filename} = creates filename in pwd  
 hostname = displayes current host name 
-ifconfig = displayes current host network configs 
+ifconfig = displayes current host network configs (deprecated)
+ip = current network configuration
 uname = displayes system information 
 date = returns current system date
 last = displayes list of last logins
@@ -29,13 +30,13 @@ du -hs = shows dir size
 time {some commands} = measures time spend on running a particular command
 getent {database} {key} = shows specific admin db record
 
-cmd --help = displayes cmd short documentation 
-man {cmd} = displayes command complete documentation 
+cmd --help = displays cmd short documentation
+man {cmd} = displays command complete documentation
 man -k {keyword} = performs search by keyword across docs
 mandb = updates documentation index
 
 history = shows the list of executed commands during current session
-history -c = clears current session history 
+history -c = clears current session history
 history -w = writes current session history in .bash_history
 !nn # executes nn command from history 
 !{letter} # executes last command starded with letter from history 

@@ -1,0 +1,92 @@
+# networking, IPv4, IPv6
+
+IP = internet protocol
+IPv4 = older version of the IP
+
+addresses are 32 bytes
+
+example IP = 192.168.0.28/24
+
+| net. a.  | n. | subnet mask
+ 192.168.0.  28   /24
+
+net. a. = network address (this case, first 24 bytes)
+n. = node address (this case, last 8 bytes)
+subnet mask = mask that points to network address
+in order to point to port : is used = 192.168.0.28:1521
+
+Router = device that connects two or more packet-switched networks or subnetworks.
+example router IP = 192.168.0.254
+Router is a default gate away to any other network
+
+DNS = domain name system
+
+IPv6 = newer version of the IP
+
+addresses are 128 bits and written in hexadecimal
+example IPv6 IP = fe80::a00:27ff:fe30:c8b2
+columns are used to split 16 bits parts of it
+leading zeros can be omitted as well as long string zeros
+fe80::1 is a valid IPv6 address
+in order to point a port [] are used - [fe80::1]:80
+default subnet mask is 64 bits
+node bit of the address may contain the device MAC address
+
+reserved IPv6 addresses:
+
+::1/128 is a localhost = 127.0.0.1 IPv4
+:: or ::/0 is an unspecified IP = 0.0.0.0 IPv4
+2000::/3 is a global unicast address = worldwide unique registered adderesses are starting with anything from this range
+fd00::/8 is a unique local address = private address for internal use only; routable
+fe80::/64 is a link local address = nonroutable address that makes sure that every interface is an IPv6 address
+ff00::/8 is a multicast address = group address that allows devices to communicate to specific group of devices
+
+fe80:: is used by default
+
+ip a = showing current network configuration; shows network devices
+ip addr show = ip a
+LO = loopback = is the internal IP stack; interface exists for historical reasons
+
+MAC address = unique identifier on the network card
+inet = IPv4 address
+inet6 = IPv6 address
+
+ip route show = showing routing configuration, including default gateway
+cat /etc/resolv.conf = contain the IP address of the DNS name server
+
+ping {address} = checking if address is available
+
+ways to broke network:
+    - comment DNS pointer in /etc/resolv.conf -> Name or service not known
+    - ip route del default via {IP address} -> Network is unreachable; fix = ip route add default via {IP address}
+    - ip addr del dev {device} {IP address} -> Name or service not known; fix = dhclient or ip addr add (a a can be used) dev {device} {IP address}
+
+Network device naming (biosdevname)
+biosdevname = uses device name that reveal information about physical location and \
+              system-udevd generates the network device names
+
+    - em123 = Ethernet Motherboard Portnumber
+    - p<port>p<slot> = (PCI, PCI port); PCI = Peripheral Component Interconnect
+    - eno123 = (EtherNet Onboard)
+    - if driver doesn't reveal sufficient information, eth0 etc. is used
+
+hostname = shows host name (FQDM Fully Qualified Domain Name)
+hostname -I = shows IPv4 addresses linked to the hostname
+hostnamectl = allows to control the hostname
+hostnamectl status = shows information about the host and machine
+
+configuring host names in /etc/hosts may be convenient for internal purposes in order to not configure DNS server
+in /etc/nsswitch.conf the hostname search order can be redefined (f.e. files dbs myhostname)
+
+# network utility commands
+
+ping {DNS name or IP address} = pings an address and checks if its up
+ping -f {DNS name or IP address} = sends a ping flood
+ping -f -s 4096 {DNS name or IP address} = putting a ping bomb on a machine
+netstat - tulpen = shows everything that is listening on this machine
+ss -tuna = socket stats, more or less is a netstat -tulpen in modern way
+nmap = tool to perform an advance network scan
+nmap {IP address} = list of the all open ports that are discovered
+dig {DNS name} = retrieve information about specific DNS name
+
+#
