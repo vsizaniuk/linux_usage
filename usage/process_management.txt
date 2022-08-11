@@ -1,0 +1,57 @@
+# processes, threads and jobs
+
+- example job
+
+dd if=/dev/zero of /dev/null = will be running forever and takes shell control
+cntrl+Z = interrupts current process, returns shell control
+bg = after cntrl+Z, resumes the process in background
+
+{command} & = puts a command running in the background
+dd if=/dev/zero of /dev/null & = will be running forever, but in background
+
+jobs = shows all running in background jobs (under current shell)
+fg {job number} = puts a job running in a foreground
+cntrl+C will kill current foreground job
+
+- processes
+
+top = shows important information about currently running processes (like windows task manager)
+use q to quit
+top is named that way because it lists processes in top-active order desc
+it also shows some stats and parameters:
+    - load average = last 1, 5 ans 15 minutes avg processes count
+        (a way to estimate is it bad or good could be comparing with the number of CPU)
+    - from within top press 1 (shows CPU line) in order to get the CPUs number
+        usage% us (user space) usage% sy (system space) = distribution of work between system's and users space
+        time% id (idle loop) = amount of time that processor is doing nothing
+        time% wa (waiting for I/O) = amount of time that is being spent on I/O
+    -KiB Mem (RAM usage): num Total, num Free, num Used, num buff/cache (mem available for caching, benchmark could be 30%)
+
+    -KiB Swap (overflow buffer, if a server runs out of RAM, swap space (on disk) is used for emulate RAM)
+    -KiB Swap: num Total, num Free, num Used, num avail
+
+top -u {username} = filters top for specific user
+press f in order to show available fields
+choose field and press space to include it in the top report
+use < or > to change the sorting column
+use z to add some color
+use W to write current top settings to ~/.toprc
+use R to renice a particular process (allows changing priority of a process's CPU usage)
+    - priority can be set using th range -20 to 19
+    - renice command can also do so
+    - nice command can also do so, but only when you're starting a process
+use K to kill a process from a top interface
+    - kill [-signal number] {pid} can be used to send a signal to a process
+    - signal number 9 is a force kill
+    - killall {processes name} = kills all the processes with a specific name
+
+ps aux = shows a snapshot of all processes (a report)
+usually is used with pipe to less or pipe to grep (ps aux | less, ps aux | grep)
+columns are:
+    -user, -pid, -cpu%, -mem%, -vsz, -rss, -tty (if ? then bg process else user), -stat (process's status), -start, -time, -command
+
+ps -ef = shows another kind of processes report
+ps fax = shows a forest display of the processes
+ps aux --sort {field} = sorts the processes report
+
+#
