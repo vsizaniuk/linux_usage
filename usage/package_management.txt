@@ -1,0 +1,38 @@
+# packages
+
+A package is a tar ball with something in addition:
+    - a script to copy files in the right location
+    - a database to keep track of what is installed
+Packages typically focus on the software they want to install and use dependencies for related software packages
+dependencies installation -> a package installation
+
+Libraries are designed in order to provide the common functionality
+
+ldd {program} = shows program's library dependencies
+
+Software managers are the solution for dependencies issue
+they do so by working with repositories (on-line software storage)
+examples of software managers:
+    - yum
+        - uses repositories that are in /etc/yum.repos.d/ (configs are also here)
+        - yum repolist = shows repositories that are available
+        - commands are: yum [install|search|remove|groups|list|update|provides]
+        - yum provides {program} = performs a more deep search
+        - yum list installed = shows a list of installed packages
+        - allows working with package groups
+        - commands are: yum groups [list|install]
+        - yum history = shows log of changes
+    - apt (Ubuntu equivalent to yum)
+        - repositories are defined in /etc/apt/sources.list and /etc/apt/sources.list.d/
+        - general use is similar to yum
+        - apt autoremove = removes all unused packages
+    - dnf (CentOS equivalent to yum)
+
+rpm is an old package manager and should not be used for installation anymore
+it is still useful to work with RPM database:
+    - rpm -qf {file} = shows a package that contains a file
+    - rpm -ql {package} = shows a package content
+    - rpm -qpc {package.rpm} = shows package's configuration files
+    - rpm -qp --scripts {package.rpm} = shows package's scripts; that's important option in order to analyze
+
+#

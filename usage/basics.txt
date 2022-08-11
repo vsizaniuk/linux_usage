@@ -30,6 +30,7 @@ du -hs = shows dir size
 time {some commands} = measures time spend on running a particular command
 getent {database} {key} = shows specific admin db record
 free -m = shows memory usage stats
+whereis {program} = shows a program location
 
 cmd --help = displays cmd short documentation
 man {cmd} = displays command complete documentation
