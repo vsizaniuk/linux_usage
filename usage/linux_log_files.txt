@@ -1,0 +1,18 @@
+# reading logs
+overview:
+    - syslog is a legacy service that takes care of logging (old syslog, syslog-ng and rsyslog)
+    - systemd-journald is a system-integrated log service
+
+journalctl = shows the complete journal
+journalctl -u <unit> = shows information about specific unit (uses tab completion)
+journalctl --dmesg = shows kernel messages
+journalcrl -u crond --since yesterday --until 9:00 -p info = shows crond messages for a period of time
+
+rsyslog service works with facility, priority and destination
+    - facility is what rsyslog should be logging for
+    - priority indicates the severity of a log event
+    - destination defines where a message should be written to
+    - /etc/rsyslog.conf is a main configuration file (here log rules are defined)
+    - /etc/rsyslog.d/ is a snap in directory
+
+#
