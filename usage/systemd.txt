@@ -4,6 +4,7 @@ first thing that is started after starting the Linux kernel
 it starts processes and can do it in parallel
 manages mounts, timers, paths and much more
 it is events driven
+man includes a specification for every unit type that can be used
 
 Items that are managed by systemd are called units
 Default units are in /usr/lib/systemd/system, custom units are in /etc/systemd

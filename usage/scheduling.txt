@@ -1,0 +1,50 @@
+# scheduling
+
+cron = the classical scheduling solution
+    - uses the crond daemon
+    - crontab -e = allows editing tasks
+    - man 5 crontab = shows specification
+    - /etc/crontab = text version spec + env variables for all jobs that are running by cron
+    - /etc/cron.d/ = a directory for snap-in files (a location for specific jobs configurations)
+    - /etc/cron.[hourly|daily|monthly|weekly]/ = a directory for jobs that have to be run periodically without exact time config
+at = scheduling one-time tasks
+    - uses the atd daemon
+    - at = allows scheduling tasks
+systemd timers = the newer alternative to cron
+    - create a .timer unit and run it using systemctl
+    - timers (.timer files) are stored in /usr/lib/systemd/system
+    - in order to make a timer work there must be a corresponding .service file (ex. test.timer corresponds to test.service)
+    - .timer includes date and time run configs
+    - .service provides an action
+    - timers can be managed with standard systemctl command as a units
+    - man systemd.timer = shows timer-units configuration options
+    - systemctl status test.timer = shows timer status
+    - systemctl enable --now test.timer = enables and starts a timer
+
+example cron job specification:
+crontab -e = opens a job specification editor
+
+time spec -> action spec
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed
+
+action spec = logger hello
+example = 0 * * * * logger hello
+
+example at job:
+
+at {time} = opens a job editor prompt, schedules a time moment to run it
+> command [commands]
+cntrl + D = write job and confirm a run
+cntrl + C = cancel
+atq = shows at-scheduled tasks
+atrm {job id} = deletes a task from at-schedule
+
+#
