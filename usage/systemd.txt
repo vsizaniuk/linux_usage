@@ -24,6 +24,7 @@ systemctl show {name.service} = shows all available configuration parameters
 systemctl edit {name.service} = allows editing service configuration
 systemctl deamon-reload = reloads service configuration
 systemctl restart {name.service} = restarts the service
+systemctl reset-failed = reset systemd timers (for failed servoces)
 
 # target
 is a group of services
