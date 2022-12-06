@@ -15,4 +15,7 @@ rsyslog service works with facility, priority and destination
     - /etc/rsyslog.conf is a main configuration file (here log rules are defined)
     - /etc/rsyslog.d/ is a snap in directory
 
+/var/log/messages - usually, the most important log file in linux system 
+logger {message} = send message directly to /var/log/messages
+
 #
